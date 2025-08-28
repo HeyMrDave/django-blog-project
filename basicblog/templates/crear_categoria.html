@@ -1,0 +1,51 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <!-- Card con sombra -->
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-body p-4">
+
+                    <!-- Título -->
+                    <h1 class="h3 mb-4 text-center text-success fw-bold">📂 Crear Categoría</h1>
+
+                    {% if error %}
+                    <div class="alert alert-danger">
+                        {{ error }}
+                    </div>
+                    {% endif %}
+
+                    <!-- Formulario -->
+                    <form action="" method="post" class="needs-validation">
+                        {% csrf_token %}
+
+                        {% for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                            <div class="text-danger small">
+                                {{ field.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+
+                        <!-- Botón -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success btn-lg shadow-sm">
+                                ➕ Crear
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

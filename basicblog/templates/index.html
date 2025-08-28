@@ -1,0 +1,46 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-4 fw-bold text-primary">Bienvenido a mi Blog</h1>
+    <p class="lead text-muted mt-3">
+        Este es un proyecto personal creado con <span class="fw-semibold">Django</span>, 
+        donde practico operaciones CRUD, URLs, plantillas y manejo de datos.
+    </p>
+
+    <div class="mt-4">
+        <a href="{% url 'mostrar_art' %}" class="btn btn-lg btn-primary shadow">
+            📖 Ver mis artículos
+        </a>
+    </div>
+</div>
+
+<div class="row text-center mt-5">
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">CRUD</h5>
+                <p class="card-text">Crear, leer, actualizar y borrar artículos fácilmente.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">Categorías</h5>
+                <p class="card-text">Organiza tus artículos en diferentes categorías.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">Búsqueda</h5>
+                <p class="card-text">Encuentra rápidamente el artículo que necesitas.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

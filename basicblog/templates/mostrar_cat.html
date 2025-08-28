@@ -1,0 +1,33 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <!-- Card de Categoría -->
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-body p-4">
+                    
+                    <!-- Título -->
+                    <h1 class="h3 text-success fw-bold mb-3">📂 {{ categoria.titulo }}</h1>
+                    
+                    <!-- Descripción -->
+                    <p class="fs-5 text-muted">{{ categoria.descripcion }}</p>
+                </div>
+
+                <!-- Acciones -->
+                <div class="card-footer bg-white d-flex justify-content-between">
+                    <a href="{% url 'mostrar_art_cat' categoria.id %}" class="btn btn-primary btn-sm">
+                        📖 Ver artículos
+                    </a>
+                    <a href="{% url 'editar_cat' categoria.id %}" class="btn btn-warning btn-sm">
+                        ✏️ Editar
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

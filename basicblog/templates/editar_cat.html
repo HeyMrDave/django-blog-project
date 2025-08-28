@@ -1,0 +1,48 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <!-- Card principal -->
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-body p-4">
+
+                    <!-- Título -->
+                    <h1 class="h3 text-warning fw-bold mb-4 text-center">✏️ Actualizar Categoría</h1>
+
+                    <!-- Formulario de actualización -->
+                    <form action="" method="post" class="needs-validation">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="text-danger small">{{ field.errors }}</div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+
+                        <!-- Botones principales -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="submit" class="btn btn-warning btn-lg shadow-sm">
+                                💾 Actualizar
+                            </button>
+                            <a href="{% url 'detalles_cat' categoria.id %}" class="btn btn-secondary btn-lg shadow-sm">
+                                ❌ Cancelar
+                            </a>
+                            <a href="{% url 'eliminar_cat' categoria.id %}" class="btn btn-danger btn-lg shadow-sm">
+                                🗑️ Eliminar
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

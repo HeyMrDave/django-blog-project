@@ -1,0 +1,38 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-5 text-primary fw-bold">📰 Todos los Artículos Publicados</h1>
+
+    <div class="row g-4">
+        {% for art in articulos %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm h-100 border-0 rounded-3">
+                
+                {% if art.imagen_art %}
+                <img src="{{ art.imagen_art.url }}" class="card-img-top rounded-top" alt="{{ art.titulo }}">
+                {% endif %}
+                
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{ art.titulo }}</h5>
+                    <p class="card-text text-muted">
+                        {{ art.contenido|truncatewords:20 }}
+                    </p>
+                </div>
+
+                <div class="card-footer bg-white">
+                    <p class="mb-1"><strong>Autor:</strong> {{ art.autor }}</p>
+                    <p class="mb-2"><strong>Categoría:</strong> {{ art.categoria_art.titulo }}</p>
+                    <a href="{% url 'detalles_art' art.id %}" class="btn btn-sm btn-primary w-100">
+                        📖 Ver detalles
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-muted">No hay artículos publicados todavía.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <!-- Card principal del artículo -->
+            <div class="card shadow-lg border-0 rounded-3">
+                
+                <!-- Imagen -->
+                {% if articulo.imagen_art %}
+                <img src="{{ articulo.imagen_art.url }}" class="card-img-top rounded-top" alt="{{ articulo.titulo }}">
+                {% endif %}
+                
+                <div class="card-body p-4">
+                    <!-- Título -->
+                    <h1 class="card-title text-primary fw-bold">{{ articulo.titulo }}</h1>
+                    
+                    <!-- Fechas -->
+                    <p class="text-muted small mb-1">📅 Publicado: {{ articulo.fecha_creacion }}</p>
+                    {% if articulo.fecha_modificacion %}
+                        <p class="text-muted small">✏️ Actualizado: {{ articulo.fecha_modificacion }}</p>
+                    {% endif %}
+                    
+                    <!-- Contenido -->
+                    <p class="mt-4 fs-5">{{ articulo.contenido }}</p>
+                    
+                    <!-- Autor y Categoría -->
+                    <p class="mt-4 mb-1"><strong>👤 Autor:</strong> {{ articulo.autor }}</p>
+                    <p><strong>📂 Categoría:</strong> {{ articulo.categoria_art.titulo }}</p>
+                </div>
+
+                <!-- Acciones -->
+                <div class="card-footer bg-white d-flex justify-content-between">
+                    <a href="{% url 'act_artcl' articulo.id %}" class="btn btn-warning btn-sm">
+                        ✏️ Actualizar
+                    </a>
+                    <a href="{% url 'eliminar_art' articulo.id %}" class="btn btn-danger btn-sm">
+                        🗑️ Eliminar
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
