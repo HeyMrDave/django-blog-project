@@ -14,7 +14,8 @@ class ArticuloForm(forms.ModelForm):
             'imagen_art': 'Subir Imagen',
             'categoria_art': 'Elegir Categoria'
         }
-
+    
+    #Mandar datos formateados
     def clean(self):
         cleaned_data = super().clean()
         for field, value in cleaned_data.items():
