@@ -44,3 +44,11 @@ class CategoriaForm(forms.ModelForm):
             'descripcion': forms.Textarea(attrs={'placeholder': 'Ingrese la descripcion'})
         }
 
+    #Mandar datos formateados categoria
+    def clean(self):
+        cleaned_data = super().clean()
+        for field, value in cleaned_data.items():
+            if isinstance(value, str):
+                cleaned_data[field] = value.strip()
+        return cleaned_data
+
