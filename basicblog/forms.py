@@ -15,6 +15,13 @@ class ArticuloForm(forms.ModelForm):
             'categoria_art': 'Elegir Categoria'
         }
 
+    def clean(self):
+        cleaned_data = super().clean()
+        for field, value in cleaned_data.items():
+            if isinstance(value, str):
+                cleaned_data[field] = value.strip()
+        return cleaned_data
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         w = self.fields['imagen_art'].widget
